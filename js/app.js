@@ -610,6 +610,7 @@ function getVisiblePrefixes() {
 // Fetch specific shard prefixes from the API
 async function loadShardData(prefixList) {
     if (prefixList.length === 0) return;
+    if (!cachedCoverage) cachedCoverage = {};
 
     try {
         const resp = await fetch(`/api/samples?prefixes=${prefixList.join(',')}`);
